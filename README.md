@@ -9,7 +9,7 @@
   - Cavidan Hasanli
   - Namig Alasgarov
 - **Ops:**
-  - Ruslan Jababrov
+  - Ruslan Jabbarov
 - **SRE:**
   - Zamig Aliyev
 
