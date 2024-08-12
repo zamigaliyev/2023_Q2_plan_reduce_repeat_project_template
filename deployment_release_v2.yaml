@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+  namespace: course4
+  labels:
+    app: mainApp
+spec:
+  replicas: 5  # Updated to handle 2.5 times the load
+  selector:
+    matchLabels:
+      app: mainApp
+  template:
+    metadata:
+      labels:
+        app: mainApp
+    spec:
+      containers:
+      - name: mainApp
+        image: nginx:latest
+        resources:
+          requests:
+            memory: "512Mi"  # Updated based on new RAM requirements
+            cpu: "500m"      # Updated CPU allocation
+        ports:
+        - containerPort: 80
+      - name: order_processor
+        image: nginx:latest
+        resources:
+          requests:
+            memory: "1Gi"    # Higher RAM requirement for order processing
+            cpu: "1"         # High CPU utilization for order processor
+        ports:
+        - containerPort: 80
